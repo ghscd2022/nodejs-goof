@@ -1,7 +1,7 @@
-name: Example workflow using Snyk
+name: Snyk
 on: push
 jobs:
-  security:
+  snyk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
