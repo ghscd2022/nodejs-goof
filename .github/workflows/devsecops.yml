@@ -5,6 +5,8 @@ on:
     branches:
       - 'magno'
 
+permissions: write-all
+
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
