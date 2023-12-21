@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan the JuiceShop
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.10.0
         with:
