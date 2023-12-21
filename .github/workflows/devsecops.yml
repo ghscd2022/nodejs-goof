@@ -5,6 +5,8 @@ on:
     branches:
       -'maria'
 
+permissions: write-all
+
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
