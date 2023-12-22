@@ -17,10 +17,13 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
 
   zap_scan:
     runs-on: ubuntu-latest
     name: ZAP Scan
+    needs: snyk
     steps:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.10.0
