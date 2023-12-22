@@ -8,6 +8,17 @@ on:
 permissions: write-all
 
 jobs:
+
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+
   zap_scan:
     runs-on: ubuntu-latest
     name: ZAP Scan - Owasp Juice Shop
