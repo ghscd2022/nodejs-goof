@@ -1,4 +1,4 @@
-name: DevSecOps-Raphael
+name: DevSecOps
 on:
   push:
     branches:
@@ -7,9 +7,21 @@ on:
 permissions: write-all
 
 jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+          
   zap_scan:
     runs-on: ubuntu-latest
     name: Scan the JuiceShop
+    needs: snyk
     steps:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.10.0
